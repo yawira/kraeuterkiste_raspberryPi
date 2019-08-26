@@ -1,0 +1,6 @@
+aw\kraeuterkiste_raspberry\controller\TestController.class
+aw\kraeuterkiste_raspberry\KraeuterkisteRaspberryApplication.class
+aw\kraeuterkiste_raspberry\photo\PhotoController.class
+aw\kraeuterkiste_raspberry\model\TestDto.class
+aw\kraeuterkiste_raspberry\model\User.class
+aw\kraeuterkiste_raspberry\security\WebSecurityConfiguration.class
