@@ -7,3 +7,4 @@ aw\kraeuterkiste_raspberry\security\WebSecurityConfiguration.class
 aw\kraeuterkiste_raspberry\pump\service\PumpService.class
 aw\kraeuterkiste_raspberry\pump\model\PumpDto.class
 aw\kraeuterkiste_raspberry\led\service\LEDService.class
+aw\kraeuterkiste_raspberry\gpio\GpioHandler.class
