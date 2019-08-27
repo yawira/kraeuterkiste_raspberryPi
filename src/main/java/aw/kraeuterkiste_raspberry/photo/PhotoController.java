@@ -1,30 +1,56 @@
 package aw.kraeuterkiste_raspberry.photo;
 
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hopding.jrpicam.RPiCamera;
+import com.hopding.jrpicam.exceptions.FailedToRunRaspistillException;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+
 import java.util.Base64;
 
 @RestController
 public class PhotoController {
+
+    @Value("${IMG_WIDTH}")
+    private int imgWidth;
+
+    @Value("${IMG_HEIGHT}")
+    private int imgHeight;
+
+    @Value("${IMG_FORMAT}")
+    private String imgFormat;
+
     @GetMapping("/upload")
     public String uploadPicture() {
-        Path path = Paths.get("/home/pi/bild1.jpg");
 
-        byte[] picture = null;
-        // IOException muss gefangen werden, um die "readAllBytes" Methode zu verwenden
+        byte[] picAsBytes = new byte[]{};
+
         try {
-            picture = Files.readAllBytes(path);
-        } catch (final IOException e) {
+            RPiCamera piCamera = new RPiCamera();
+
+            piCamera.setToDefaults();
+
+            BufferedImage pic = piCamera.takeBufferedStill( imgWidth, imgHeight);
+
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(pic, imgFormat, baos);
+            picAsBytes = baos.toByteArray();
+
+        } catch (FailedToRunRaspistillException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
 
-        String encodedImage = Base64.getEncoder().encodeToString(picture);
-        //String encodedImage = Base64.encode(picture);
-
-        return encodedImage;
+        return Base64.getEncoder().encodeToString(picAsBytes);
     }
 }
