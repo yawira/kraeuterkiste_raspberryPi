@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: aw.kraeuterkiste_raspberry.KraeuterkisteRaspberryApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.119 s - in aw.kraeuterkiste_raspberry.KraeuterkisteRaspberryApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.384 s - in aw.kraeuterkiste_raspberry.KraeuterkisteRaspberryApplicationTests

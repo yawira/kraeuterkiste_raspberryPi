@@ -1,6 +1,9 @@
-aw\kraeuterkiste_raspberry\controller\TestController.class
 aw\kraeuterkiste_raspberry\KraeuterkisteRaspberryApplication.class
 aw\kraeuterkiste_raspberry\photo\PhotoController.class
-aw\kraeuterkiste_raspberry\model\TestDto.class
-aw\kraeuterkiste_raspberry\model\User.class
+aw\kraeuterkiste_raspberry\led\controller\LEDController.class
+aw\kraeuterkiste_raspberry\pump\controller\PumpController.class
+aw\kraeuterkiste_raspberry\led\model\LEDDto.class
 aw\kraeuterkiste_raspberry\security\WebSecurityConfiguration.class
+aw\kraeuterkiste_raspberry\pump\service\PumpService.class
+aw\kraeuterkiste_raspberry\pump\model\PumpDto.class
+aw\kraeuterkiste_raspberry\led\service\LEDService.class
