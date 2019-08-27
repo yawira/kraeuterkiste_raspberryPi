@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4604dcbf-a7ea-4692-a29c-71e73e0be2c6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/aw/kraeuterkiste_raspberry/led/controller/LEDController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/aw/kraeuterkiste_raspberry/led/model/LEDDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/aw/kraeuterkiste_raspberry/led/service/LEDService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/aw/kraeuterkiste_raspberry/controller/TestController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/aw/kraeuterkiste_raspberry/model/TestDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/aw/kraeuterkiste_raspberry/model/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,6 +34,7 @@
     <option name="width" value="1180" />
     <option name="height" value="1040" />
   </component>
+  <component name="ProjectId" id="1Pycnw41RAnYNjQdARlhiQSPvRm" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -50,6 +46,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -83,17 +80,41 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="42839a61-ac05-4a49-87f4-83aec146bec4" name="Default Changelist" comment="" />
+      <changelist id="4604dcbf-a7ea-4692-a29c-71e73e0be2c6" name="Default Changelist" comment="" />
       <created>1566825506525</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1566825506525</updated>
       <workItem from="1566825507965" duration="5538000" />
+      <workItem from="1566849948305" duration="3947000" />
     </task>
+    <task id="LOCAL-00001" summary="merge with master">
+      <created>1566835113894</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1566835113894</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="merge with master" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge with master" />
   </component>
   <component name="masterDetails">
     <states>
