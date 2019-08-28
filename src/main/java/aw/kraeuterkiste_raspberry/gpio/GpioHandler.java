@@ -14,8 +14,11 @@ public class GpioHandler {
 
     private Pin ledPin;
     private Pin pumpPin;
+    private Pin moistPin;
+
     private GpioPinDigitalOutput ledOutputPin;
     private GpioPinDigitalOutput pumpOutputPin;
+    private GpioPinDigitalOutput moistOutputPin;
 
     private GpioController gpioController;
 
@@ -82,5 +85,6 @@ public class GpioHandler {
 
         return pumpOn;
     }
-
 }
+
+
