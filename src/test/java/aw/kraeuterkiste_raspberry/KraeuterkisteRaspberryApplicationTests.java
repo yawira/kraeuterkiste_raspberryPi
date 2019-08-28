@@ -18,9 +18,6 @@ public class KraeuterkisteRaspberryApplicationTests {
     GpioHandler gpioHandler;
 
     @MockBean
-    MoistureService moistureService;
-
-    @InjectMocks
     MoistureController moistureController;
 
     @Test
