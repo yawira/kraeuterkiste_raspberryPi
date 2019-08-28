@@ -1,4 +1,5 @@
 aw\kraeuterkiste_raspberry\KraeuterkisteRaspberryApplication.class
+aw\kraeuterkiste_raspberry\moisture\GpioPinAnalogInput.class
 aw\kraeuterkiste_raspberry\pump\controller\PumpController.class
 aw\kraeuterkiste_raspberry\led\model\LEDDto.class
 aw\kraeuterkiste_raspberry\security\WebSecurityConfiguration.class

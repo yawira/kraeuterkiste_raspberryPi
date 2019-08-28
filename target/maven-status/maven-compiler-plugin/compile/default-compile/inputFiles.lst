@@ -1,4 +1,5 @@
 C:\Users\Friederike Lewinski\IdeaProjects\krauterkiste\kraeuterkiste_raspberry\src\main\java\aw\kraeuterkiste_raspberry\KraeuterkisteRaspberryApplication.java
+C:\Users\Friederike Lewinski\IdeaProjects\krauterkiste\kraeuterkiste_raspberry\src\main\java\aw\kraeuterkiste_raspberry\moisture\GpioPinAnalogInput.java
 C:\Users\Friederike Lewinski\IdeaProjects\krauterkiste\kraeuterkiste_raspberry\src\main\java\aw\kraeuterkiste_raspberry\pump\service\PumpService.java
 C:\Users\Friederike Lewinski\IdeaProjects\krauterkiste\kraeuterkiste_raspberry\src\main\java\aw\kraeuterkiste_raspberry\moisture\service\MoistureService.java
 C:\Users\Friederike Lewinski\IdeaProjects\krauterkiste\kraeuterkiste_raspberry\src\main\java\aw\kraeuterkiste_raspberry\led\controller\LEDController.java

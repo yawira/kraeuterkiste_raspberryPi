@@ -1,9 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: aw.kraeuterkiste_raspberry.KraeuterkisteRaspberryApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 3.946 s <<< FAILURE! - in aw.kraeuterkiste_raspberry.KraeuterkisteRaspberryApplicationTests
-contextLoads(aw.kraeuterkiste_raspberry.KraeuterkisteRaspberryApplicationTests)  Time elapsed: 0.001 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'moistureController': Invocation of init method failed; nested exception is java.lang.UnsatisfiedLinkError: com.pi4j.wiringpi.Gpio.wiringPiSetup()I
-Caused by: java.lang.UnsatisfiedLinkError: com.pi4j.wiringpi.Gpio.wiringPiSetup()I
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.911 s - in aw.kraeuterkiste_raspberry.KraeuterkisteRaspberryApplicationTests
