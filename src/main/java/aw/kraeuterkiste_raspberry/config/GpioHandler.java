@@ -1,4 +1,4 @@
-package aw.kraeuterkiste_raspberry.gpio;
+package aw.kraeuterkiste_raspberry.config;
 
 import com.pi4j.gpio.extension.base.AdcGpioProvider;
 import com.pi4j.gpio.extension.mcp.MCP3008GpioProvider;
