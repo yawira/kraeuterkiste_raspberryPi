@@ -1,89 +1,83 @@
 package aw.kraeuterkiste_raspberry.gpio;
 
+import com.pi4j.gpio.extension.base.AdcGpioProvider;
+import com.pi4j.gpio.extension.mcp.MCP3008GpioProvider;
+import com.pi4j.gpio.extension.mcp.MCP3008Pin;
 import com.pi4j.io.gpio.*;
+import com.pi4j.io.spi.SpiChannel;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import java.io.IOException;
 
 @Component
 public class GpioHandler {
 
-    @Value("${LED_PIN}")
+    @Value("${LED_PIN_NAME}")
     private String ledPinName;
-    @Value("${PUMP_PIN}")
+    @Value("${PUMP_PIN_NAME}")
     private String pumpPinName;
+    @Value("${MOIST_CHANNEL_NAME}")
+    private String moistChannelName;
 
-    private Pin ledPin;
-    private Pin pumpPin;
-    private Pin moistPin;
+    @Value("${SPI_CHANNEL}")
+    private int spiChannel;
+
+    private GpioController gpioController;
+    private AdcGpioProvider adcGpioProvider;
 
     private GpioPinDigitalOutput ledOutputPin;
     private GpioPinDigitalOutput pumpOutputPin;
-    private GpioPinDigitalOutput moistOutputPin;
 
-    private GpioController gpioController;
+    private GpioPinAnalogInput moistInputPin;
 
-//    @PostConstruct
-//    public void initGpioController() {
-//        gpioController = GpioFactory.getInstance();
-//        ledPin = RaspiPin.getPinByName(ledPinName);
-//        pumpPin = RaspiPin.getPinByName(pumpPinName);
-//        ledOutputPin = gpioController.provisionDigitalOutputPin(ledPin);
-//        pumpOutputPin = gpioController.provisionDigitalOutputPin(pumpPin);
-//    }
-//
-//    @PreDestroy
-//    public void closeGpioController() {
-//        gpioController.unprovisionPin(ledOutputPin);
-//        gpioController.unprovisionPin(pumpOutputPin);
-//        gpioController.shutdown();
-//    }
+    @PostConstruct
+    public void initGpioController() throws IOException {
+        gpioController = GpioFactory.getInstance();
+        adcGpioProvider = new MCP3008GpioProvider(SpiChannel.getByNumber(spiChannel));
+
+        Pin ledPin = RaspiPin.getPinByName(ledPinName);
+        Pin pumpPin = RaspiPin.getPinByName(pumpPinName);
+        Pin moistPin = getMoistPinByName();
+
+        moistInputPin = gpioController.provisionAnalogInputPin(adcGpioProvider, moistPin);
+        ledOutputPin = gpioController.provisionDigitalOutputPin(ledPin);
+        pumpOutputPin = gpioController.provisionDigitalOutputPin(pumpPin);
+    }
+
+    @PreDestroy
+    public void shutdownGpioController() {
+        gpioController.unprovisionPin(ledOutputPin, pumpOutputPin, moistInputPin);
+        gpioController.shutdown();
+    }
+
+    private Pin getMoistPinByName() {
+        for(Pin pin : MCP3008Pin.ALL) {
+            if(pin.getName().equals(moistChannelName)) return pin;
+        }
+        return null;
+    }
 
     public void toggleLight() {
-        gpioController = GpioFactory.getInstance();
-        ledPin = RaspiPin.GPIO_04;
-        ledOutputPin = gpioController.provisionDigitalOutputPin(ledPin);
-
         ledOutputPin.toggle();
-
-        gpioController.unprovisionPin(ledOutputPin);
-        gpioController.shutdown();
     }
 
     public boolean isLedOn() {
-        gpioController = GpioFactory.getInstance();
-        ledPin = RaspiPin.GPIO_04;
-        ledOutputPin = gpioController.provisionDigitalOutputPin(ledPin);
-
-        boolean ledOn = ledOutputPin.getState() != PinState.HIGH;
-
-        gpioController.unprovisionPin(ledOutputPin);
-        gpioController.shutdown();
-
-        return ledOn;
+        return ledOutputPin.getState() != PinState.HIGH;
     }
 
     public void togglePump() {
-        gpioController = GpioFactory.getInstance();
-        pumpPin = RaspiPin.GPIO_05;
-        pumpOutputPin = gpioController.provisionDigitalOutputPin(pumpPin);
-
         pumpOutputPin.toggle();
-
-        gpioController.unprovisionPin(pumpOutputPin);
-        gpioController.shutdown();
     }
 
     public boolean isPumpOn() {
-        gpioController = GpioFactory.getInstance();
-        pumpPin = RaspiPin.GPIO_05;
-        pumpOutputPin = gpioController.provisionDigitalOutputPin(pumpPin);
+        return pumpOutputPin.getState() != PinState.HIGH;
+    }
 
-        boolean pumpOn = pumpOutputPin.getState() != PinState.HIGH;
-
-        gpioController.unprovisionPin(pumpOutputPin);
-        gpioController.shutdown();
-
-        return pumpOn;
+    public Double measureMoisture() {
+        return moistInputPin.getValue();
     }
 }
 

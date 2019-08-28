@@ -1,19 +1,31 @@
 package aw.kraeuterkiste_raspberry.moisture.service;
 
-import com.pi4j.gpio.extension.base.AdcGpioProvider;
-import com.pi4j.gpio.extension.mcp.MCP3008GpioProvider;
-import com.pi4j.gpio.extension.mcp.MCP3008Pin;
-import com.pi4j.io.gpio.GpioController;
-import com.pi4j.io.gpio.GpioFactory;
-import com.pi4j.io.gpio.GpioPinAnalogInput;
-import com.pi4j.io.spi.SpiChannel;
+import aw.kraeuterkiste_raspberry.gpio.GpioHandler;
+import aw.kraeuterkiste_raspberry.moisture.model.MoistureDto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.PostConstruct;
+import org.springframework.web.client.RestTemplate;
 
 @Service
+@EnableScheduling
 public class MoistureService {
 
+    private final GpioHandler gpioHandler;
+    private final RestTemplate backendRestTemplate;
+
+    @Autowired
+    public MoistureService(GpioHandler gpioHandler, RestTemplate backendRestTemplate) {
+        this.gpioHandler = gpioHandler;
+        this.backendRestTemplate = backendRestTemplate;
+    }
 
 
+    @Scheduled(fixedRate = 1000)
+    public void measureAndBroadcastData() {
+        MoistureDto moistureDto = new MoistureDto(gpioHandler.measureMoisture());
+        System.out.println(moistureDto.getMoistureData());
+        backendRestTemplate.postForObject("/moisture/data", moistureDto, MoistureDto.class);
+    }
 }
