@@ -8,6 +8,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDateTime;
+
 @Service
 @EnableScheduling
 public class MoistureService {
@@ -23,7 +25,7 @@ public class MoistureService {
 
     @Scheduled(fixedRate = 1000)
     public void measureAndBroadcastData() {
-        MoistureDto moistureDto = new MoistureDto(gpioHandler.measureMoisture());
+        MoistureDto moistureDto = new MoistureDto(LocalDateTime.now(), gpioHandler.measureMoisture());
         backendRestTemplate.postForObject("/moisture/data", moistureDto, MoistureDto.class);
     }
 
