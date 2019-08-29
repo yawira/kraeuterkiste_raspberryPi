@@ -1,4 +1,4 @@
-package aw.kraeuterkiste_raspberry.photo.service;
+package aw.kraeuterkiste_raspberry.camera.service;
 
 import aw.kraeuterkiste_raspberry.config.Camera;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Base64;
 
 @Service
-public class PhotoService {
+public class CameraService {
 
     @Value("${IMG_FORMAT}")
     private String imgFormat;
@@ -20,7 +20,7 @@ public class PhotoService {
     private final Camera camera;
 
     @Autowired
-    public PhotoService(Camera camera) {
+    public CameraService(Camera camera) {
         this.camera = camera;
     }
 
