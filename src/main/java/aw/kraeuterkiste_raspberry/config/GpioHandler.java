@@ -80,5 +80,3 @@ public class GpioHandler {
         return moistInputPin.getValue();
     }
 }
-
-
