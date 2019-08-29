@@ -11,5 +11,5 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class LEDDto {
     private LocalDateTime dateTime;
-    private boolean on;
+    private boolean active;
 }

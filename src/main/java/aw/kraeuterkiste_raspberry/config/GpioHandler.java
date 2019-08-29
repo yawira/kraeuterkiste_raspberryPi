@@ -64,7 +64,7 @@ public class GpioHandler {
         ledOutputPin.toggle();
     }
 
-    public boolean isLedOn() {
+    public boolean isLedActive() {
         return ledOutputPin.getState() != PinState.HIGH;
     }
 
@@ -72,7 +72,7 @@ public class GpioHandler {
         pumpOutputPin.toggle();
     }
 
-    public boolean isPumpOn() {
+    public boolean isPumpActive() {
         return pumpOutputPin.getState() != PinState.HIGH;
     }
 

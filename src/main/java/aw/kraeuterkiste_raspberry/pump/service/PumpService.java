@@ -15,9 +15,11 @@ public class PumpService {
         this.gpioHandler = gpioHandler;
     }
 
-    public PumpDto togglePump() {
+    public void togglePump() {
         gpioHandler.togglePump();
-        return new PumpDto(gpioHandler.isPumpOn());
     }
 
+    public boolean getStatus() {
+        return gpioHandler.isPumpActive();
+    }
 }

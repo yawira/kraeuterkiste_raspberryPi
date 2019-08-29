@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
+
 @RestController
 @RequestMapping("/pump")
 public class PumpController {
@@ -22,7 +24,8 @@ public class PumpController {
     @GetMapping("/toggle")
     @ResponseBody
     public PumpDto toggle() {
-        return pumpService.togglePump();
+        pumpService.togglePump();
+        return new PumpDto(LocalDateTime.now(), pumpService.getStatus());
     }
 
 }
