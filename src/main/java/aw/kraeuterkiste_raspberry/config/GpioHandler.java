@@ -43,8 +43,8 @@ public class GpioHandler {
         Pin moistPin = getMoistPinByName();
 
         moistInputPin = gpioController.provisionAnalogInputPin(adcGpioProvider, moistPin);
-        ledOutputPin = gpioController.provisionDigitalOutputPin(ledPin);
-        pumpOutputPin = gpioController.provisionDigitalOutputPin(pumpPin);
+        ledOutputPin = gpioController.provisionDigitalOutputPin(ledPin, PinState.HIGH);
+        pumpOutputPin = gpioController.provisionDigitalOutputPin(pumpPin, PinState.HIGH);
     }
 
     @PreDestroy
