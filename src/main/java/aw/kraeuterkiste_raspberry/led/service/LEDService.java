@@ -5,6 +5,8 @@ import aw.kraeuterkiste_raspberry.led.model.LEDDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class LEDService {
 
@@ -15,8 +17,12 @@ public class LEDService {
         this.gpioHandler = gpioHandler;
     }
 
-    public LEDDto toggleLight() {
+    public void toggleLight() {
         gpioHandler.toggleLight();
-        return new LEDDto(gpioHandler.isLedOn());
     }
+
+    public boolean getStatus() {
+        return gpioHandler.isLedOn();
+    }
+
 }

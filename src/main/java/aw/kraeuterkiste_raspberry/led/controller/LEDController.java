@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
+
 @RestController
 @RequestMapping("/led")
 public class LEDController {
@@ -22,7 +24,8 @@ public class LEDController {
     @GetMapping("/toggle")
     @ResponseBody
     public LEDDto toggle() {
-        return ledService.toggleLight();
+        ledService.toggleLight();
+        return new LEDDto(LocalDateTime.now(), ledService.getStatus());
     }
 
 }
