@@ -13,6 +13,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class KraeuterkisteRaspberryApplicationTests {
 
+    /**
+     * inject mocks because code is compiled on local machine
+     * but Pi4j-dependent components can only be initialized
+     * on raspi architecture
+     */
     @MockBean
     GpioHandler gpioHandler;
 

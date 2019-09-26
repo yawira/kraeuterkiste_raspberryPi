@@ -9,10 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.awt.image.BufferedImage;
 
 
+// map url /camera/.. to this controller
+
 @RestController
 @RequestMapping("/camera")
 public class CameraController {
 
+    // inject cameraService to interact with Pi Camera
     private final CameraService cameraService;
 
     @Autowired
@@ -20,6 +23,7 @@ public class CameraController {
         this.cameraService = cameraService;
     }
 
+    // handle photo-request
     @GetMapping("/photo")
     public String takePhoto() {
         BufferedImage photo = cameraService.takePhoto();

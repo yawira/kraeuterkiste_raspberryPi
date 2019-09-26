@@ -12,11 +12,13 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.io.IOException;
 
+// Configure Gpio Pins for the Raspi
+// This class handles all Pi4j library interaction
+// @Component -> Call this class only once on program start
 @Component
 public class GpioHandler {
 
-    // TODO
-
+    // load initial values from config file
     @Value("${LED_PIN_NAME}")
     private String ledPinName;
     @Value("${PUMP_PIN_NAME}")
@@ -27,6 +29,7 @@ public class GpioHandler {
     @Value("${SPI_CHANNEL}")
     private int spiChannel;
 
+    // use classes from Pi4j-Library
     private GpioController gpioController;
     private AdcGpioProvider adcGpioProvider;
 
@@ -35,6 +38,8 @@ public class GpioHandler {
 
     private GpioPinAnalogInput moistInputPin;
 
+    // initialize Gpio-Pins only once on program start
+    // this saves time when running modules
     @PostConstruct
     public void initGpioController() throws IOException {
         gpioController = GpioFactory.getInstance();
@@ -49,6 +54,7 @@ public class GpioHandler {
         pumpOutputPin = gpioController.provisionDigitalOutputPin(pumpPin, PinState.HIGH);
     }
 
+    // release handle form GPIO pins
     @PreDestroy
     public void shutdownGpioController() {
         gpioController.unprovisionPin(ledOutputPin, pumpOutputPin, moistInputPin);
@@ -62,6 +68,9 @@ public class GpioHandler {
         return null;
     }
 
+    /**
+     * deligate work to Pi4j-Library functions
+     */
     public void toggleLight() {
         ledOutputPin.toggle();
     }

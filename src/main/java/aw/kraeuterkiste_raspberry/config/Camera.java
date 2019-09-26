@@ -9,9 +9,11 @@ import java.awt.image.BufferedImage;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 
-
+// Set initial values for photos
+// @Component -> Call this class only once on program start
 @Component
 public class Camera {
+    // load initial values from config file
     @Value("${IMG_WIDTH}")
     private int imgWidth;
 
@@ -20,11 +22,13 @@ public class Camera {
 
     private final RPiCamera camera;
 
+    // initialize camera from RPiCamera-Library
     public Camera() throws FailedToRunRaspistillException {
         this.camera = new RPiCamera();
         camera.setToDefaults();
     }
 
+    // provide functionality to take a photo
     public BufferedImage takePhoto() {
         try {
             return camera.takeBufferedStill(imgWidth, imgHeight);
