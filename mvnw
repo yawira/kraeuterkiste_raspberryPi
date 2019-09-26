@@ -121,7 +121,6 @@ if $mingw; then
       cd "$JAVA_HOME"
       pwd
     ))"
-  # TODO classpath?
 fi
 
 if [ -z "$JAVA_HOME" ]; then

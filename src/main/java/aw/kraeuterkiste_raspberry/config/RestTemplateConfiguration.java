@@ -9,6 +9,8 @@ import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class RestTemplateConfiguration {
+    // RestTemplateBuilder is used for dynamic configuration of RestTemplate through application.properties
+
     @Value("${backend.url}")
     private String backendURL;
 

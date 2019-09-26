@@ -23,7 +23,8 @@ public class MoistureService {
         this.backendRestTemplate = backendRestTemplate;
     }
 
-    @Scheduled(fixedRate = 1000)
+    // Annotation sends POST/ request every 10 seconds
+    @Scheduled(fixedRate = 10000)
     public void measureAndBroadcastData() {
         MoistureDto moistureDto = new MoistureDto(LocalDateTime.now(), gpioHandler.measureMoisture());
         backendRestTemplate.postForObject("/moisture/data", moistureDto, MoistureDto.class);

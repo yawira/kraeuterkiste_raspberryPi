@@ -13,7 +13,9 @@ import java.util.Base64;
 
 @Service
 public class CameraService {
-
+    /* Converts Buffered Image taken by Raspberry Pi camera into Base64 encoded string,
+    * necessary to send it via HTTP and display it through the frontend.
+    */
     @Value("${IMG_FORMAT}")
     private String imgFormat;
 
