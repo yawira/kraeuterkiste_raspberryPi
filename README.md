@@ -3,6 +3,8 @@
 This is Raspberry Pi module of our "Kraeuterkiste" project. 
 It serves as a server as well as a client to the Java-Backend, enabling data exchange and handling HTTP-requests.
 
+Project Kraeuterkiste is a REST-Application consisting of three parts - Frontend, Backend and Raspberry Pi module. It is build to enable users to take care of their plants via the internet. Let's say you are on holiday and want to check on your greens at home. Simply visit a website and push a button to take a photo of the current state or water it in case it looks dry. Check the charts monitoring the moisture of your plant's soil or the previous watering/lighting details. If your plant doesn't get enough light - no problem! Push a button and a 6500K LED light will help it grow.  
+
 ## Getting Started
 ### Prerequisites
 
